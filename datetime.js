@@ -25,6 +25,38 @@ function formatNumber(n) {
     return n[1] ? n : '0' + n
 }
 
+/**
+ * 两个date之间的时间差，返回X天X小时或者到期
+ * @param start
+ * @param end
+ * @returns {*}
+ */
+function betweenTime(start, end) {
+    let s = start.getTime()
+    let e = end.getTime()
+    let bt = e - s
+    if (bt <= 0){
+        return '已到期'
+    }
+    let day = parseInt(bt / (1000 * 60 * 60 * 24))
+    let hour = parseInt((bt - day * 1000 * 60 * 60 * 24) / (1000 * 60 * 60))
+    if(day<=0&&hour<=0){
+        return '已到期'
+    }
+    return day + '天' + hour + '小时'
+}
+
+/**
+ * 该date与当前时间时间差
+ * @param end
+ * @returns {*}
+ */
+function remainingTime(end){
+    end = (end.split(' ')[0] + ' 23:59:59').replace(/-/g, '/')
+    return betweenTime(new Date(), new Date(end))
+}
+
 export default {
-    formatDatetime
+    formatDatetime,
+    remainingTime
 }
