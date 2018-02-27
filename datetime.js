@@ -19,6 +19,19 @@ function formatDatetime(date,split='-') {
 
     return [year, month, day].map(formatNumber).join(split) + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
+/**
+ * 格式化日期字符串输出
+ * @param date Date类型
+ * @param split 日期分隔符，默认为'-'
+ * @returns {string}
+ */
+function formatDate(date,split='-') {
+    let year = date.getFullYear()
+    let month = date.getMonth() + 1
+    let day = date.getDate()
+
+    return [year, month, day].map(formatNumber).join(split)
+}
 
 function formatNumber(n) {
     n = n.toString()
@@ -58,5 +71,6 @@ function remainingTime(end){
 
 export default {
     formatDatetime,
+    formatDate,
     remainingTime
 }
