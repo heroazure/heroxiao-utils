@@ -8,3 +8,4 @@
  - 变量类型的判断(type.typeOf太暴力)
  - 深度克隆数组或者普通对象(clone.deepCopy)
  - 两个对象之间的merge(clone.merge),最好还是npm下载merge库吧
+ - 添加一个document.title修改无效解决方案，在sundry.js内
